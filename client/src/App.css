@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    background-color: #DEFFDA;
+}
+.hospo-logo {
+    font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: xx-large;
+  color: #2E3434;
+  padding-left: 1.8%;
+  margin-top: 1.2%;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin-left: 3%;
+}
+.nav-bar-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 35%;
+}
+.nav-btn {
+    margin-left: 1%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #2E3434;
+    font-size: 15px;
+}
+.get-in-touch {
+    color: #2E3434;
+    border: 1px solid #2E3434;
+    width: 150%;
+    padding-left: 5%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    padding-right: 5%;
+    font-size: medium;
+    background-color: transparent;
+    border-radius: 20px;
+}
+.get-in-touch:hover {
+    background-color: #2E3434;
+    color: #DEFFDA;
+}
+.style1 {
+    z-index: -1;
+    position: absolute;
+    margin-left: 40%;
+}
+.flex-1 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+.flex-1-1 {
+    width: 70%;
+}
+.flex-1-2 {
+    width: 25%;
+    margin-right: 5%;
+}
+.contact-us-btn {
+    color: #DEFFDA;
+    border: 1px solid #2E3434;
+    font-size: medium;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: #2E3434;
+    border-radius: 20px;
+    margin-top: 4%;
+}
+.contact-us-btn:hover {
+    background-color: transparent;
+    color: #2E3434;
+}
+.flex-2 {
+    width: 80%;
+    margin-top: 2%;
+    margin-left: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-2-2 {
+    margin-left: 4%;
+}

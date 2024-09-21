@@ -1,0 +1,26 @@
+.line1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 65px;
+    letter-spacing: -2px;
+    color: #2E3434;
+    margin-left: 3%;
+}
+.line2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 23px;
+    color: #2E3434;
+    margin-top: 3%;
+}
+.line3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 280px;
+    color: #2E3434;
+    margin-top: 3%;
+    letter-spacing: -20px;
+}
