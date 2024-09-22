@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const htp=require("http").createServer(app)
 const socket=require("socket.io")
-const io=socket(htp)
+const io=socket(htp,{cors:"*"})
+const cors=require("cors")
 
+app.use(cors())
 app.get("/", (req, res) => {
     res.send("Welcome to Hospo!");
 });
