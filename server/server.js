@@ -12,14 +12,16 @@ app.get("/", (req, res) => {
 let rooms=[]
 io.on("connection",(socket)=>{
     socket.on("join",(id)=>{
+        console.log(id)
         if(!rooms.includes(id)){
             rooms.push(id)
         }
         socket.join(id)
     })
     socket.on("check",(id)=>{
+        console.log(rooms)
         if(rooms.includes(id)){
-            socket.to(id).emit("conform","yes")
+            socket.emit("conform","yes")
         }
     })
     socket.on('updateLocation', (data) => {
@@ -31,6 +33,6 @@ io.on("connection",(socket)=>{
 
 })
 
-htp.listen(3000,()=>{
+htp.listen(6001,()=>{
     console.log("hg8")
 })

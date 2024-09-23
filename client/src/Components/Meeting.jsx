@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Peer from 'peerjs';
 import { useParams, useNavigate } from 'react-router';
-import io from 'socket.io-client';  // Import Socket.IO
+import io from 'socket.io-client';  
 
-const socket = io("http://localhost:3000");  // Connect to Socket.IO backend
+const socket = io("http://localhost:6001");
 
 function Meeting() {
     const [stream, setStream] = useState();
     const [peerId, setPeerId] = useState('');
     const { userid } = useParams();
-    const [remotePeerIdValue, setRemotePeerIdValue] = useState('');
     const peerInstance = useRef(null);
     const localVideoRef = useRef();
     const remoteVideoRef = useRef();
@@ -19,7 +18,6 @@ function Meeting() {
     const name = userid;
 
     useEffect(() => {
-        // Socket.IO: Join the room when component mounts
         socket.emit("join", name);
 
         navigator.mediaDevices.getUserMedia({ video: video, audio: audio })
@@ -53,13 +51,12 @@ function Meeting() {
         });
     }
 
-    // New: Check if the room has other users using Socket.IO
     function checkRoom() {
+        console.log("hi")
         socket.emit("check", name);
-        socket.on("confirm", (response) => {
+        socket.on("conform", (response) => {
             if (response === "yes") {
-                console.log("Another user is in the room");
-                // You can initiate the call here if you want
+                console.log("user is in the room");
             } else {
                 console.log("No other users in the room");
             }
@@ -105,7 +102,6 @@ function Meeting() {
                 </div>
                 <div className="w-96 m-3 relative">
                     <video playsInline autoPlay ref={remoteVideoRef} className="rounded-lg w-full" />
-                    <h1 className="text-white absolute bottom-1 left-2 font-semibold">{remotePeerIdValue}</h1>
                 </div>
             </div>
             <div className="flex mt-4">

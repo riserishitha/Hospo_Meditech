@@ -16,9 +16,189 @@ function Doctors() {
 
     useEffect(() => {
         const fetchDoctors = async () => {
-            const response = await fetch('../doctors.json');
-            const data = await response.json();
-            setDoctors(data);
+            setDoctors([
+                {
+                  "id": 1,
+                  "name": "Dr. John Doe",
+                  "description": "Cardiologist with 10 years of experience.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 2,
+                  "name": "Dr. Jane Smith",
+                  "description": "Pediatrician specialized in child healthcare.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 3,
+                  "name": "Dr. Michael Johnson",
+                  "description": "Neurologist with expertise in brain disorders.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 4,
+                  "name": "Dr. Sarah Brown",
+                  "description": "Dermatologist focusing on skin treatments.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 5,
+                  "name": "Dr. Emily Wilson",
+                  "description": "Orthopedic surgeon for bone and joint issues.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 6,
+                  "name": "Dr. Matthew Davis",
+                  "description": "Oncologist specializing in cancer treatment.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 7,
+                  "name": "Dr. Olivia Garcia",
+                  "description": "Gynecologist with expertise in women's health.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 8,
+                  "name": "Dr. William Martinez",
+                  "description": "Pulmonologist specializing in respiratory issues.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 9,
+                  "name": "Dr. Sophia Rodriguez",
+                  "description": "Endocrinologist focusing on hormonal disorders.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 10,
+                  "name": "Dr. David Lee",
+                  "description": "Psychiatrist specializing in mental health.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 11,
+                  "name": "Dr. Isabella Walker",
+                  "description": "Ophthalmologist focusing on eye care.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 12,
+                  "name": "Dr. James Hall",
+                  "description": "Gastroenterologist for digestive system diseases.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 13,
+                  "name": "Dr. Mia Allen",
+                  "description": "Rheumatologist focusing on autoimmune diseases.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 14,
+                  "name": "Dr. Jacob Young",
+                  "description": "Nephrologist specializing in kidney diseases.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 15,
+                  "name": "Dr. Emma King",
+                  "description": "Urologist specializing in urinary tract issues.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 16,
+                  "name": "Dr. Alexander Scott",
+                  "description": "Allergist specialized in allergy treatment.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 17,
+                  "name": "Dr. Lucas Green",
+                  "description": "Immunologist focusing on immune system disorders.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 18,
+                  "name": "Dr. Charlotte Adams",
+                  "description": "Anesthesiologist with expertise in pain management.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 19,
+                  "name": "Dr. Ethan Baker",
+                  "description": "Hematologist focusing on blood disorders.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 20,
+                  "name": "Dr. Amelia Rivera",
+                  "description": "Radiologist specializing in medical imaging.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 21,
+                  "name": "Dr. Logan Campbell",
+                  "description": "ENT specialist focusing on ear, nose, and throat.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 22,
+                  "name": "Dr. Abigail Sanchez",
+                  "description": "Podiatrist focusing on foot and ankle conditions.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 23,
+                  "name": "Dr. Mason Phillips",
+                  "description": "Plastic surgeon with a focus on reconstructive surgery.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 24,
+                  "name": "Dr. Harper Mitchell",
+                  "description": "Geriatrician specializing in elderly care.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 25,
+                  "name": "Dr. Elijah Perez",
+                  "description": "Vascular surgeon focusing on blood vessel issues.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 26,
+                  "name": "Dr. Evelyn Roberts",
+                  "description": "Pathologist specializing in disease diagnosis.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 27,
+                  "name": "Dr. Henry Turner",
+                  "description": "Infectious disease specialist for contagious illnesses.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 28,
+                  "name": "Dr. Mila Parker",
+                  "description": "Emergency medicine doctor for urgent care.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 29,
+                  "name": "Dr. Daniel White",
+                  "description": "Physiatrist specializing in rehabilitation and recovery.",
+                  "image": "https://via.placeholder.com/150"
+                },
+                {
+                  "id": 30,
+                  "name": "Dr. Lily Harris",
+                  "description": "Dentist focusing on oral health and treatments.",
+                  "image": "https://via.placeholder.com/150"
+                }
+              ]
+              );
         };
         fetchDoctors();
     }, []);
@@ -37,7 +217,7 @@ function Doctors() {
                                 <p className="text-gray-600">{doctor.description}</p>
                             </div>
                         </div>
-                        <Link to={`/register/${doctor.id}`} className="bg-green-400 text-white hover:font-bold font-semibold">
+                        <Link to={`/medcardreg/${doctor.id}`} className="bg-green-400 p-2 rounded-lg text-white hover:font-bold font-semibold">
                             Book Appointment
                         </Link>
                     </li>
