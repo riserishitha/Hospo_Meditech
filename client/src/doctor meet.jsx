@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import io from 'socket.io-client';  
-const socket=io("http://localhost:6001")
+const socket=io("https://hospo-fbdf.onrender.com")
 function Docmet(){
     const [value,setvalue]=useState("")
     function check(){

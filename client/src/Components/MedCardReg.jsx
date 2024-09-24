@@ -51,7 +51,7 @@ function MedCardReg() {
         e.preventDefault();
         console.log(formData);
         
-        axios.post('http://localhost:6001/register', formData)
+        axios.post('https://hospo-fbdf.onrender.com/register', formData)
             .then(response => {
                 console.log('Success:', response.data);
             })
