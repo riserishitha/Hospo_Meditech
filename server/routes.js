@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
         from: 'mohanavamsi14@gmail.com',
         to: doctorId,
         subject: 'New Registration',
-        html: `<h3>Hey doc your are having a booking on ${date} want to conform if ypu want to take the meting link provided below</h3>  <a href="http://localhost:6001/conform/${email}/${phone}">click this</a><a href="https://hospo.vercel.app/meeting/${email}">meeting link</a>`
+        html: `<h3>Hey doc your are having a booking on ${date} want to conform if ypu want to take the meting link provided below</h3>  <a href="https://hospo-fbdf.onrender.com/conform/${email}/${phone}">click this</a><a href="https://hospo.vercel.app/meeting/${email}">meeting link</a>`
     };
 
     try {
@@ -51,10 +51,10 @@ router.post("/conform/:email/:phone", async (req, res) => {
             from: 'mohanavamsi16@outlook.com',
             to: email,
             subject: 'New Registration',
-            html: `Hey hi your schedule is done join meeting by clicking the lnk below on the scheduled date on 9:30 https://hospo.vercel.app/meeting/${email}`
+            html: `Hey hi your schedule is done join meeting by clicking the lnk below on the scheduled date on 9:30 https://hospo-ten.vercel.app/meeting/${email}`
         };
         await transporter.sendMail(mailOptions);
-        await send(`Hey hi your schedule is done join meeting by clicking the lnk below on the scheduled date on 9:30 https://hospo.vercel.app/meeting/${email}`,phone)
+        await send(`Hey hi your schedule is done join meeting by clicking the lnk below on the scheduled date on 9:30 https://hospo-ten.vercel.app/meeting/${email}`,phone)
         res.status(200).json({ message: 'Booking confirmed successfully' });
     } catch (error) {
         res.status(500).json({ error: 'Failed to confirm booking' });
