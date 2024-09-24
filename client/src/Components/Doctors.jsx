@@ -19,9 +19,10 @@ function Doctors() {
             setDoctors([
                 {
                   "id": 1,
-                  "name": "Dr. John Doe",
+                  "name": "Dr. Jatin Jaydev",
                   "description": "Cardiologist with 10 years of experience.",
-                  "image": "https://via.placeholder.com/150"
+                  "email":"jatin.batchu@kalvium.community",
+                  "image": "https://media.licdn.com/dms/image/v2/D5603AQFXf2O2E8ZUOw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1723775958106?e=1732752000&v=beta&t=nuxuA3anGSLXX_8A7fJLKirAiUzP7p2Qatx6Dx9fl-U"
                 },
                 {
                   "id": 2,
@@ -217,7 +218,7 @@ function Doctors() {
                                 <p className="text-gray-600">{doctor.description}</p>
                             </div>
                         </div>
-                        <Link to={`/medcardreg/${doctor.id}`} className="bg-green-400 p-2 rounded-lg text-white hover:font-bold font-semibold">
+                        <Link to={`/medcardreg/${doctor.email}`} className="bg-green-400 p-2 rounded-lg text-white hover:font-bold font-semibold">
                             Book Appointment
                         </Link>
                     </li>

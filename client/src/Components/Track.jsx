@@ -44,13 +44,13 @@ function TrackDelivery() {
                     <p><strong>Status:</strong> {deliveryData.status}</p>
                     <p><strong>Location:</strong> Lat: {deliveryData.location.lat}, Lng: {deliveryData.location.lng}</p>
                     
-                    <MapContainer center={mapCenter} zoom={13} style={{ height: '60vh', width: '100%' }}>
+                    <MapContainer center={mapCenter} zoom={28} style={{ height: '100vh', width: '100%' }} className=' h-screen'>
                         <TileLayer
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             attribution='Hospo'
                         />
                         <Marker position={[melat,melong]}icon={new icon({
-                            iconUrl: "https://www.clipartmax.com/png/middle/188-1882796_red-home-icon-house-icon-red.png",
+                            iconUrl: "https://res.cloudinary.com/dus9hgplo/image/upload/v1727150457/jdcxtpky1jw103pshbm5.png",
                             iconSize: [40,40], 
                             iconAnchor: [12, 41],
                         })}>
@@ -59,7 +59,7 @@ function TrackDelivery() {
                             </Popup>
                         </Marker>
                         <Marker position={[deliveryData.location.lat, deliveryData.location.lng]} icon={new icon({
-                            iconUrl: "https://www.creativehatti.com/wp-content/uploads/2021/10/Delivery-boy-is-going-on-scooter-for-pizza-delivery-5-small.jpg",
+                            iconUrl: "https://res.cloudinary.com/dus9hgplo/image/upload/v1727150160/pfauaxctuemmit6vwswf.png",
                             iconSize: [60, 71], 
                             iconAnchor: [12, 41],
                         })}>

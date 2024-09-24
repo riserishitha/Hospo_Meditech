@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
+import axios from 'axios'; // Import axios for making HTTP requests
 
 function MedCardReg() {
     const {doctorId}=useParams()
@@ -9,8 +10,8 @@ function MedCardReg() {
         phone: '',
         address: '',
         registrationType: 'online',
-        symptoms: [],
-        medications: [],
+        symptoms: '', 
+        medications: '', 
         date: '',
         doctorId:doctorId
     });
@@ -20,8 +21,8 @@ function MedCardReg() {
         if (type === 'checkbox') {
             setFormData((prevData) => {
                 const newSymptoms = checked
-                    ? [...prevData.symptoms, value]
-                    : prevData.symptoms.filter((symptom) => symptom !== value);
+                    ? prevData.symptoms ? prevData.symptoms + ', ' + value : value
+                    : prevData.symptoms.replace(new RegExp(`,?\\s*${value}`), '');
                 return { ...prevData, symptoms: newSymptoms };
             });
         } else {
@@ -34,10 +35,10 @@ function MedCardReg() {
 
     const handleMedicationChange = (e) => {
         const options = e.target.options;
-        const selectedMedications = [];
+        let selectedMedications = '';
         for (let i = 0; i < options.length; i++) {
             if (options[i].selected) {
-                selectedMedications.push(options[i].value);
+                selectedMedications += (selectedMedications ? ', ' : '') + options[i].value;
             }
         }
         setFormData((prevData) => ({
@@ -49,6 +50,14 @@ function MedCardReg() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
+        
+        axios.post('http://localhost:6001/register', formData)
+            .then(response => {
+                console.log('Success:', response.data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     };
 
     return (
