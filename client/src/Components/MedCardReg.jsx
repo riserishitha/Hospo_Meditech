@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios';
 
 function MedCardReg() {
     const {doctorId}=useParams()

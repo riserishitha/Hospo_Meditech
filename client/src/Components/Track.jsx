@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import Navbar from './Navbar';
 import L, { icon } from 'leaflet';
 import io from 'socket.io-client';
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
@@ -37,14 +38,26 @@ function TrackDelivery() {
 
     return (
         <div>
-            <h1>Track Delivery Boy</h1>
-            {deliveryData ? (
+            <Navbar />
+            <div className='tracking-details-div'>
+            <div className='tracking-div'>
+                <div className='tracking-div-main'>
+                <center><p className='line2-1'>Tracking details</p>
+                <hr /><br />
+                <p className='line4-1'>Name : Vinay</p>
+                <p className='line4-1'>Phone no : +91 63011 81244</p>
+                <p className='line4-1'>Estimated time : 40 Min</p>
+                <p className='line4-1'>Payment mode : Cash on delivery</p>
+                </center>
+                </div>
                 <div>
-                    <p><strong>Name:</strong> {deliveryData.name}</p>
-                    <p><strong>Status:</strong> {deliveryData.status}</p>
-                    <p><strong>Location:</strong> Lat: {deliveryData.location.lat}, Lng: {deliveryData.location.lng}</p>
-                    
-                    <MapContainer center={mapCenter} zoom={28} style={{ height: '100vh', width: '100%' }} className=' h-screen'>
+                    <img src="https://res.cloudinary.com/dus9hgplo/image/upload/v1727173987/xh1hjjfnbrbm3qus4zjy.jpg" alt="" className='delivery-boy-image' />
+                </div>
+
+            </div>
+            {deliveryData ? (
+                <div className='tracking-map'>       
+                    <MapContainer center={mapCenter} zoom={28} className=' h-screen'>
                         <TileLayer
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             attribution='Hospo'
@@ -72,6 +85,7 @@ function TrackDelivery() {
             ) : (
                 <p>Loading...</p>
             )}
+            </div>
         </div>
     );
 }

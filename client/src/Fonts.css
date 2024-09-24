@@ -15,6 +15,14 @@
     color: #2E3434;
     margin-top: 3%;
 }
+.line2-1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 23px;
+    color: #ffffff;
+    margin-top: 3%;
+}
 .line3 {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
@@ -23,4 +31,17 @@
     color: #2E3434;
     margin-top: 3%;
     letter-spacing: -20px;
+}
+.line4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #2E3434;
+}
+.line4-1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #ffffff;
+    margin-top: 1%;
 }
