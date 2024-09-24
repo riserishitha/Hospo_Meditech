@@ -1,4 +1,4 @@
-import Navbar from "./NAvbar"
+import Navbar from "./Navbar"
 const Home = () => {
   return (
     <div>
