@@ -33,11 +33,14 @@ io.on("connection",(socket)=>{
         
         io.emit('deliveryLocationUpdate', data);
     });
+    socket.on("mylocation",(log,lat)=>{
+        io.emit("customerloc",log,lat)
+    })
 
 
 })
 
 htp.listen(6001,async ()=>{
     await mongoose.connect("mongodb+srv://mohanavamsi14:vamsi@cluster0.bk07f.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-    console.log("hg8")
+    console.log("http://localhost:6001")
 })
