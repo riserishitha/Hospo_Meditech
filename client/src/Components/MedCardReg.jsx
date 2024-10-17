@@ -60,7 +60,7 @@ function MedCardReg() {
         e.preventDefault();
         console.log(formData);
 
-        axios.post('http://localhost:6001/register', formData)
+        axios.post('https://hospo.onrender.com/register', formData)
             .then(response => {
                 console.log('Success:', response.data);
                 toast.success("Thanks for choosing Hospo. Your doctor will send you an email.", { position: "top-right" });

@@ -210,15 +210,15 @@ function Doctors() {
             <h1 className="text-3xl font-bold text-black mb-6">Doctors List</h1>
             <ul className="space-y-4">
                 {doctors.map(doctor => (
-                    <li key={doctor.id} className="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+                    <li key={doctor.id} className="  bg-transparent  hover:shadow-2xl border border-black p-4 rounded-lg flex justify-between items-center">
                         <div className="flex items-center">
                             <img src={doctor.image} alt={doctor.name} className="w-16 h-16 rounded-full mr-4" />
                             <div>
-                                <span className="text-black font-bold">{doctor.name}</span>
+                                <span className=" font-bold">{doctor.name}</span>
                                 <p className="text-gray-600">{doctor.description}</p>
                             </div>
                         </div>
-                        <Link to={`/medcardreg/${doctor.email}`} className="bg-green-400 p-2 rounded-lg text-white hover:font-bold font-semibold">
+                        <Link to={`/medcardreg/${doctor.email}`} className="bg-[#2E3434] p-2 rounded-lg text-[#DEFFDA] hover:bg-transparent hover:text-[#2E3434] border border-black font-semibold">
                             Book Appointment
                         </Link>
                     </li>

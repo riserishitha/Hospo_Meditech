@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router';
 import io from 'socket.io-client';  
 import axios from "axios"
 
-const socket = io("https://hospo-fbdf.onrender.com");
+const socket = io("https://hospo.onrender.com");
 
 function Meeting() {
     const [stream, setStream] = useState();
