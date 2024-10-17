@@ -12,8 +12,10 @@ import Docmet from "./doctor meet"
 import Glitch from "./Components/Glitch"
 
 const App = () => {
+  localStorage.setItem("delivery",false)
   return (
     <Routes>
+
       <Route path="/" element={<Home/>}/>
       <Route path="/doctors" element={<Doctors/>}/>
       <Route path="/medcardreg/:doctorId" element={<MedCardReg/>}/>

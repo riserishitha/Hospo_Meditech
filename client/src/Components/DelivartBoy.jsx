@@ -1,11 +1,16 @@
+import { icon } from 'leaflet';
 import  { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
 function DeliveryBoy() {
-    const [location, setLocation] = useState({ lat: null, lng: null });
+    const [location, setLocation] = useState([51.505,-0.09]);
+    const [data,setdata]=useState({lat:"",lng:""})
 
     useEffect(() => {
-        const socketIo = io('https://hospo-fbdf.onrender.com');
+        const socketIo = io('https://hospo.onrender.com');
+        socketIo.on("customerloc",(log,lat)=>{
+            setdata({lat:lat,lng:log})
+        })
 
         const sendLocationToServer = (lat, lng) => {
             const data = {
@@ -23,7 +28,7 @@ function DeliveryBoy() {
                 navigator.geolocation.watchPosition(
                     (position) => {
                         const { latitude, longitude } = position.coords;
-                        setLocation({ lat: latitude, lng: longitude });
+                        setLocation([latitude, longitude ]);
                         sendLocationToServer(latitude, longitude);
                     },
                     (error) => console.error('Error fetching location', error),

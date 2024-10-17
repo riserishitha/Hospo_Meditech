@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Peer from 'peerjs';
 import { useParams, useNavigate } from 'react-router';
 import io from 'socket.io-client';  
+import axios from "axios"
 
 const socket = io("https://hospo-fbdf.onrender.com");
 
@@ -79,21 +80,27 @@ function Meeting() {
 
     function endCall() {
         if (peerInstance.current) {
-            peerInstance.current.destroy();
+            peerInstance.current.destroy();  
         }
-        nav('/');
-    }
+        
+        if (stream) {
+            stream.getVideoTracks()[0].enabled = false;
+        }
 
-    function copyToClipboard(text) {
-        navigator.clipboard.writeText(text)
-            .then(() => {
-                console.log('Text copied to clipboard');
-            })
-            .catch((error) => {
-                console.error('Unable to copy text: ', error);
-            });
+    if(localStorage.getItem("delivery")){
+        axios.post("http://localhost:6001/delivery", {
+            name:localStorage.getItem("name"),
+            email:localStorage.getItem("email")
+        })
+        .then((response) => {
+            console.log(response.data.message);
+            nav('/');  
+        })
+        .catch((error) => {
+            console.error("Error ending call or updating delivery:", error);
+        });
     }
-
+    }
     return (
         <div className="h-screen bg-DEFFDA p-2 flex flex-col justify-center items-center">
             <div className="flex flex-wrap w-full justify-center">

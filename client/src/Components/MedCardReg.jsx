@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function MedCardReg() {
-    const {doctorId}=useParams()
+    const { doctorId } = useParams();
+    const nav = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
         address: '',
         registrationType: 'online',
-        symptoms: '', 
-        medications: '', 
+        symptoms: [],
+        medications: [],
         date: '',
-        doctorId:doctorId
+        deliveryRequired: false,
+        doctorId: doctorId,
     });
 
     const handleChange = (e) => {
         const { id, value, type, checked } = e.target;
         if (type === 'checkbox') {
-            setFormData((prevData) => {
-                const newSymptoms = checked
-                    ? prevData.symptoms ? prevData.symptoms + ', ' + value : value
-                    : prevData.symptoms.replace(new RegExp(`,?\\s*${value}`), '');
-                return { ...prevData, symptoms: newSymptoms };
-            });
+            if (id === 'deliveryRequired') {
+                setFormData((prevData) => ({
+                    ...prevData,
+                    deliveryRequired: checked,
+                }));
+            }
         } else {
             setFormData((prevData) => ({
                 ...prevData,
@@ -33,27 +36,38 @@ function MedCardReg() {
         }
     };
 
-    const handleMedicationChange = (e) => {
-        const options = e.target.options;
-        let selectedMedications = '';
-        for (let i = 0; i < options.length; i++) {
-            if (options[i].selected) {
-                selectedMedications += (selectedMedications ? ', ' : '') + options[i].value;
-            }
-        }
-        setFormData((prevData) => ({
-            ...prevData,
-            medications: selectedMedications,
-        }));
+    const handleSymptomsChange = (e) => {
+        const { value, checked } = e.target;
+        setFormData((prevData) => {
+            const updatedSymptoms = checked
+                ? [...prevData.symptoms, value]
+                : prevData.symptoms.filter((symptom) => symptom !== value);
+            return { ...prevData, symptoms: updatedSymptoms };
+        });
+    };
+
+    const handleMedicationsChange = (e) => {
+        const { value, checked } = e.target;
+        setFormData((prevData) => {
+            const updatedMedications = checked
+                ? [...prevData.medications, value]
+                : prevData.medications.filter((medication) => medication !== value);
+            return { ...prevData, medications: updatedMedications };
+        });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
-        
-        axios.post('https://hospo-fbdf.onrender.com/register', formData)
+
+        axios.post('http://localhost:6001/register', formData)
             .then(response => {
                 console.log('Success:', response.data);
+                toast.success("Thanks for choosing Hospo. Your doctor will send you an email.", { position: "top-right" });
+                localStorage.setItem("delivery", response.data.delivery);
+                localStorage.setItem("name",response.data.name)
+                localStorage.setItem("email",response.data.email)
+                nav("/");
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -93,7 +107,7 @@ function MedCardReg() {
                         <div className="flex flex-col">
                             {['Fever', 'Cough', 'Fatigue', 'Headache', 'Nausea'].map((symptom) => (
                                 <label key={symptom} className="flex items-center">
-                                    <input type="checkbox" value={symptom} onChange={handleChange} className="mr-2" />
+                                    <input type="checkbox" value={symptom} onChange={handleSymptomsChange} className="mr-2" />
                                     {symptom}
                                 </label>
                             ))}
@@ -101,29 +115,33 @@ function MedCardReg() {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="medications" className="block text-black font-semibold mb-1">Medications:</label>
-                            {['Aspirin', 'Ibuprofen', 'Acetaminophen', 'Antibiotics', 'Antihistamines'].map((medication) => (
-                                <label key={medication} className="flex items-center">
-                                <input type="checkbox" value={medication} onChange={handleChange} className="mr-2"  />
+                        {['Aspirin', 'Ibuprofen', 'Acetaminophen', 'Antibiotics', 'Antihistamines'].map((medication) => (
+                            <label key={medication} className="flex items-center">
+                                <input type="checkbox" value={medication} onChange={handleMedicationsChange} className="mr-2" />
                                 {medication}
-                                </label>
-                            ))}
+                            </label>
+                        ))}
                     </div>
                     <div className="mb-4">
                         <label htmlFor="date" className="block text-black font-semibold mb-1">Date:</label>
                         <input type="date" id="date" value={formData.date} onChange={handleChange} required className="border border-black p-3 w-full rounded focus:outline-none focus:ring-2 focus:ring-black" />
                     </div>
-                    
-                    <button type="submit" className="bg-green-400 text-balck p-3 rounded-lg w-full hover:bg-opacity-80 transition duration-200">Register</button>
+                    <div className="mb-4">
+                        <label htmlFor="deliveryRequired" className="flex items-center">
+                            <input type="checkbox" id="deliveryRequired" checked={formData.deliveryRequired} onChange={handleChange} className="mr-2" />
+                            Delivery Required
+                        </label>
+                    </div>
+                    <button type="submit" className="bg-green-400 text-black p-3 rounded-lg w-full hover:bg-opacity-80 transition duration-200">Register</button>
                 </form>
             </div>
             <div className="w-1/2 h-screen mt-4 rounded-xl pl-32 pr-32 flex flex-col relative items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('https://www.tvguide.com/a/img/resize/2d3b5cbf268d04ca08ebaff6e5d15946ed91a252/hub/2017/12/07/3610b246-aa6c-4619-9118-c3c2494d8f06/gooddoctor2.jpg?auto=webp&fit=crop&height=1080&width=1920')" }}>
                 <div className="bg-black absolute bottom-20 w-5/6 bg-opacity-50 text-white p-4 rounded-lg">
                     <h3 className="text-xl font-bold">Welcome to Our Clinic</h3>
-                    <p className="mt-2 ">Our experienced doctors are here to help you with your health needs. Please fill out the registration form to get started.</p>
+                    <p className="mt-2">Our experienced doctors are here to help you with your health needs. Please fill out the registration form to get started.</p>
                 </div>
             </div>
         </div>
     );
 }
-
 export default MedCardReg;
