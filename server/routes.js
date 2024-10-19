@@ -49,6 +49,7 @@ router.post("/register", async (req, res) => {
                 <ul style="font-size: 16px; color: #555;">
                     <li><strong>Name:</strong> ${name}</li>
                     <li><strong>Email:</strong> ${email}</li>
+                    <li><strong>Patient ID:</strong> ${email.split("@")[0]}</li>
                     <li><strong>Phone:</strong> ${phone}</li>
                     <li><strong>Address:</strong> ${address}</li>
                     <li><strong>Registration Type:</strong> ${registrationType}</li>
