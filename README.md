@@ -1,7 +1,7 @@
 # Hospo - MediTech Web Application  
 
 Hospo is a cutting-edge MediTech web application designed to seamlessly connect patients with doctors through secure online consultations. By eliminating long queues, providing digital medical prescriptions, and enabling live tracking for medicine deliveries, Hospo enhances the efficiency and convenience of healthcare services.  
-[Hospo!](https://www.hospotalent.co.uk/files/HOSPO%20-%20purple%20logo-website.png)
+(https://www.hospotalent.co.uk/files/HOSPO%20-%20purple%20logo-website.png)
 ## 🚀 Features  
 
 - **Secure Video Consultations** 📹  
